@@ -1,6 +1,11 @@
+'use client';
+
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { zenTokyoZoo } from './fonts'; // adjust path if needed
+import { motion } from "framer-motion";
+
 import {
   UserPlus,
   Megaphone,
@@ -9,6 +14,22 @@ import {
   Eye,
   Users2,
 } from "lucide-react"
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
 
 
 export default function HomePage() {
@@ -19,20 +40,27 @@ export default function HomePage() {
         className="relative h-screen bg-cover bg-center"
         style={{ backgroundImage: "url('/images/bpe-hero.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-wider">BANGALORE PLOT EXPO 2025</h1>
-            <div className="text-white mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">26-27 July 2025</h2>
-              <p className="text-lg">White House Convention Centre</p>
-              <p className="text-lg">HSR Layout Next to BDA Complex</p>
-            </div>
-            <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 font-semibold px-8 py-3">
-              <Link href="/registration">BOOK YOUR STALL</Link>
-            </Button>
-          </div>
-        </div>
+        <div className="absolute inset-0 "></div>
+<div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-start pt-28">
+  <div className="max-w-2xl ml-20">
+<h1
+  className={`${zenTokyoZoo.className} whitespace-nowrap text-[128px] leading-[1] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#008815] inline-block px-4`}
+>
+  Bangalore Plot Expo 2025
+</h1>
+
+    <div className="text-white mb-8 mt-4">
+      <h2 className="text-2xl md:text-3xl font-bold mb-2">26-27 July 2025</h2>
+      <p className="text-lg">White House Convention Centre</p>
+      <p className="text-lg">HSR Layout Next to BDA Complex</p>
+    </div>
+    {/* <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 font-semibold px-8 py-3">
+      <Link href="/registration">BOOK YOUR STALL</Link>
+    </Button> */}
+  </div>
+</div>
+
+
       </section>
 
       {/* About Us Section */}
@@ -80,80 +108,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Exhibit Section */}
+{/* Why Exhibit Section */}
 <section className="py-16 bg-white">
   <div className="container mx-auto px-4">
     <h2 className="text-3xl md:text-4xl font-bold text-[#00620F] text-center mb-12">
       Why Exhibit at BPE 2025?
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-      <div className="space-y-6">
-        <div className="flex items-start space-x-3">
-          <UserPlus className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Lead Generation Opportunity</h3>
-            <p className="text-gray-700">
-              Connect with a high-intent audience of business owners and salaried professionals.
-            </p>
-          </div>
-        </div>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+    >
+      {[
+        {
+          icon: <UserPlus className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Lead Generation Opportunity",
+          text: "Connect with a high-intent audience of business owners and salaried professionals.",
+        },
+        {
+          icon: <Megaphone className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Cost-Effective Advertising",
+          text: "Promote your projects directly to a focused and affluent crowd.",
+        },
+        {
+          icon: <Layers className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Diverse Plot Categories",
+          text: "Farm lands, villa plots, society plots – all in one place.",
+        },
+        {
+          icon: <Building className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Project Showcasing & Liquidation",
+          text: "Move inventory and attract serious buyers.",
+        },
+        {
+          icon: <Eye className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Brand Visibility",
+          text: "Increase recognition among Bengaluru's real estate investment community.",
+        },
+        {
+          icon: <Users2 className="text-[#00620F] w-8 h-8 mb-4" />,
+          title: "Networking",
+          text: "Meet investors, partners, and potential collaborators.",
+        },
+      ].map((point, index) => (
+        <motion.div
+          key={index}
+          variants={item}
+          className="flex flex-col items-center text-center p-4"
+        >
+          {point.icon}
+          <h3 className="font-semibold text-[#00620F] mb-2">{point.title}</h3>
+          <p className="text-gray-700">{point.text}</p>
+        </motion.div>
+      ))}
+    </motion.div>
 
-        <div className="flex items-start space-x-3">
-          <Megaphone className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Cost-Effective Advertising</h3>
-            <p className="text-gray-700">
-              Promote your projects directly to a focused and affluent crowd.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start space-x-3">
-          <Layers className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Diverse Plot Categories</h3>
-            <p className="text-gray-700">
-              Farm lands, villa plots, society plots – all in one place.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-6">
-        <div className="flex items-start space-x-3">
-          <Building className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Project Showcasing & Liquidation</h3>
-            <p className="text-gray-700">
-              Move inventory and attract serious buyers.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start space-x-3">
-          <Eye className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Brand Visibility</h3>
-            <p className="text-gray-700">
-              Increase recognition among Bengaluru's real estate investment community.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start space-x-3">
-          <Users2 className="text-[#00620F] w-6 h-6 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#00620F] mb-2">Networking</h3>
-            <p className="text-gray-700">
-              Meet investors, partners, and potential collaborators.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="text-center">
+    <div className="text-center max-w-3xl mx-auto">
       <p className="text-gray-700 mb-4">
         Whether you're a developer aiming to boost project visibility or an investor seeking your next great
         opportunity, <span className="font-semibold text-[#00620F]">#BPE 2025</span> is where connections are made
@@ -163,18 +176,23 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* Past Sponsors Section */}
-<section className="py-16 bg-[#00620F]">
-  <div className="container mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Past Sponsors</h2>
 
+
+{/* Past Sponsors Section */}
+{/* Heading outside the green background */}
+<div className="text-center mb-6">
+  <h2 className="text-3xl md:text-4xl font-bold text-[#00620F]">Past Sponsors</h2>
+</div>
+
+<section className="py-12 bg-[#00620F]">
+  <div className="container mx-auto px-2">
     <div className="relative">
       <div className="flex items-center justify-between">
         <button className="text-white hover:text-green-200">
-          <ChevronLeft size={32} />
+          <ChevronLeft size={28} />
         </button>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 flex-1 mx-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 flex-1 mx-4">
           {[
             '/images/past-sponsor/sbi.png',
             '/images/past-sponsor/rd.png',
@@ -184,7 +202,7 @@ export default function HomePage() {
           ].map((src, index) => (
             <div
               key={index}
-              className="bg-white p-4 rounded-lg aspect-square flex items-center justify-center"
+              className="bg-white p-2 rounded-md aspect-square flex items-center justify-center"
             >
               <img src={src} alt={`Sponsor ${index + 1}`} className="max-h-full max-w-full object-contain" />
             </div>
@@ -192,7 +210,7 @@ export default function HomePage() {
         </div>
 
         <button className="text-white hover:text-green-200">
-          <ChevronRight size={32} />
+          <ChevronRight size={28} />
         </button>
       </div>
     </div>

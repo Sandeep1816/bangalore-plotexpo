@@ -97,7 +97,7 @@ export default function Footer() {
   <img
     src="/images/mind-square-logo W.png"
     alt="Mindsquare Logo"
-    className="w-13 h-13 mx-auto mb-2 object-contain"
+    className="w-21 h-24 mx-auto  object-contain"
   />
 
 </div>
@@ -108,8 +108,8 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#48782C] mt-8 pt-4">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm">
-            <div className="flex space-x-4 mb-2 md:mb-0">
+          <div className="flex flex-col  justify-center items-center text-sm">
+            <div className="flex space-x-4  md:mb-0 text-center">
               <Link href="/terms" className="hover:text-green-200">
                 Terms and Conditions
               </Link>
