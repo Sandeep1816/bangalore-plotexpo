@@ -22,7 +22,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation... */}
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/" className="hover:text-green-200 transition-colors">
             Home
