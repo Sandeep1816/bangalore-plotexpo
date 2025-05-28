@@ -17,7 +17,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section
         className="relative h-screen bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+        style={{ backgroundImage: "url('/images/bpe-hero.jpg')" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
