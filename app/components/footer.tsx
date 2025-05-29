@@ -107,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#48782C] mt-8 pt-4">
+        <div className="border-t border-white mt-8 pt-4">
           <div className="flex flex-col  justify-center items-center text-sm">
             <div className="flex space-x-4  md:mb-0 text-center">
               <Link href="/terms" className="hover:text-green-200">
