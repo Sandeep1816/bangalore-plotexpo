@@ -5,6 +5,7 @@ import { Button } from "@/app/components/ui/button";
 import { ChevronLeft, ChevronRight, UserPlus, Megaphone, Layers, Building, Eye, Users2 } from "lucide-react";
 import { zenTokyoZoo } from './fonts'; // adjust path if needed
 import { motion } from "framer-motion";
+import StatsSection from "./components/StatsSection";
 
 const container = {
   hidden: { opacity: 0 },
@@ -72,20 +73,8 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-[#00620F]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
-            <div className="border border-white rounded-lg p-6 text-white">
-              <h3 className="text-lg font-semibold mb-2">EXPECTED NUMBERS</h3>
-              <div className="text-6xl font-bold">35</div>
-            </div>
-            <div className="border border-white rounded-lg p-6 text-white">
-              <h3 className="text-lg font-semibold mb-2">SPONSORS</h3>
-              <div className="text-6xl font-bold">03</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <StatsSection />
 
       {/* Why Exhibit Section */}
       <section className="py-16 bg-white">

@@ -48,7 +48,7 @@ export default function Footer() {
             {/* Contact Section */}
             <div>
               <h3 className="font-semibold text-lg mb-4">Contact</h3>
-              <p className="text-sm mb-4">xxxxxxxxx</p>
+              <p className="text-sm mb-4">9845114655</p>
 
               <div className="flex space-x-3 mb-6">
                 <Link href="#" className="hover:text-green-200"><Twitter size={20} /></Link>
@@ -57,13 +57,15 @@ export default function Footer() {
                 <Link href="#" className="hover:text-green-200"><MessageCircle size={20} /></Link>
               </div>
 
-              <div className="p-2 rounded ml-[-8px]">
+              <div className="p-2 rounded ml-[-9px] ">
                 <img
                   src="/images/mind-square-logo W (1).png"
                   alt="Mindsquare Logo"
-                  className="w-auto h-20 object-contain"
+                  className="w-auto h-20 object-contain mt-10"
                 />
               </div>
+
+
             </div>
           </div>
         </div>

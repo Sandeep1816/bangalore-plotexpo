@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
@@ -29,19 +28,52 @@ export default function RegistrationPage() {
     marketingConsent: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-  }
+  const [loading, setLoading] = useState(false)
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      const res = await fetch("/api/registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+      if (res.ok) {
+        alert("Form submitted successfully!")
+        setFormData({
+          name: "",
+          workEmail: "",
+          phoneNumber: "",
+          companyName: "",
+          industry: "",
+          jobTitle: "",
+          businessType: "",
+          message: "",
+          termsAccepted: false,
+          marketingConsent: false,
+        })
+      } else {
+        alert("Submission failed: " + data.error)
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again later.")
+      console.error("Submission error:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mt-20 mb-16">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
-        {/* Form Section */}
         <div>
           <h1 className="text-xl lg:text-2xl font-semibold text-black mb-6">
             Fill the details below to enquire about the event
@@ -101,7 +133,7 @@ export default function RegistrationPage() {
 
             <div>
               <Label>Industry</Label>
-              <Select onValueChange={(value) => handleInputChange("industry", value)}>
+              <Select value={formData.industry} onValueChange={(value) => handleInputChange("industry", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Industry" />
                 </SelectTrigger>
@@ -127,7 +159,7 @@ export default function RegistrationPage() {
 
             <div>
               <Label>Select Request Type</Label>
-              <Select onValueChange={(value) => handleInputChange("businessType", value)}>
+              <Select value={formData.businessType} onValueChange={(value) => handleInputChange("businessType", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Request Type" />
                 </SelectTrigger>
@@ -181,14 +213,13 @@ export default function RegistrationPage() {
             <Button
               type="submit"
               className="w-full bg-green-700 hover:bg-green-800"
-              disabled={!formData.termsAccepted}
+              disabled={!formData.termsAccepted || loading}
             >
-              Submit Registration
+              {loading ? "Submitting..." : "Submit Registration"}
             </Button>
           </form>
         </div>
 
-        {/* Right-side Image */}
         <div className="w-full h-full flex justify-center items-start">
           <div className="w-full h-[1000px] overflow-hidden rounded-lg">
             <img
