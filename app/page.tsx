@@ -36,7 +36,7 @@ export default function HomePage() {
 <h1
   className={`${zenTokyoZoo.className} text-[36px] sm:text-[64px] md:text-[96px] lg:text-[128px] leading-[1] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#008815] inline-block whitespace-normal sm:whitespace-nowrap`}
 >
-  Bangalore Plot Expo 2025
+  Bengaluru Plot Expo 2025
 </h1>
 
             <div className="text-white mb-8 mt-4">

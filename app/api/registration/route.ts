@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       to: "avalasandeep02@gmail.com", // Replace as needed
       subject: "BPE Registration Enquiry",
       html: `
-        <h3>BPE Registration</h3>
+        <h3>BPE Registration</h3> 
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${workEmail}</p>
         <p><strong>Phone Number:</strong> ${phoneNumber}</p>

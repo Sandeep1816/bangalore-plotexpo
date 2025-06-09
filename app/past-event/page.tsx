@@ -1,3 +1,29 @@
+'use client'
+
+import Image from 'next/image'
+
+const pastEventImages = [
+  '/images/2020events/bpe-2.jpg',
+  '/images/2020events/bpe-4.jpg',
+  '/images/2020events/bpe-6.jpg',
+  '/images/2020events/bpe-7.jpg',
+  '/images/2020events/bpe-9.jpg',
+  '/images/2020events/bpe-12.jpg',
+    '/images/2020events/bpe-13.jpg',
+  '/images/2020events/bpe-14.jpg',
+  '/images/2020events/bpe-18.jpg',
+  '/images/2020events/bpe-20.jpg',
+  '/images/2020events/bpe-21.jpg',
+  '/images/2020events/bpe-22.jpg',
+  '/images/2020events/bpe-23.jpg',
+    '/images/2020events/bpe-26.jpg',
+  '/images/2020events/bpe-27.jpg',
+  '/images/2020events/bpe-28.jpg',
+  '/images/2020events/bpe-29.jpg',
+  '/images/2020events/bpe-30.jpg',
+
+]
+
 export default function PastEventPage() {
   return (
     <div className="min-h-screen py-16">
@@ -5,12 +31,17 @@ export default function PastEventPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-green-700 text-center mb-12">Past Event</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {pastEventImages.map((src, index) => (
             <div
-              key={i}
-              className="bg-gray-200 h-64 rounded-lg flex items-center justify-center hover:shadow-lg transition-shadow"
+              key={index}
+              className="relative h-64 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
-              <span className="text-gray-500">Event Photo {i}</span>
+              <Image
+                src={src}
+                alt={`Event ${index + 1}`}
+                fill
+                className="object-cover"
+              />
             </div>
           ))}
         </div>

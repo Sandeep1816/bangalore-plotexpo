@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from "react"
 import { Button } from "@/app/components/ui/button"
@@ -24,8 +24,8 @@ export default function RegistrationPage() {
     jobTitle: "",
     businessType: "",
     message: "",
-    termsAccepted: false,
-    marketingConsent: false,
+    termsAccepted: true,
+    marketingConsent: true,
   })
 
   const [loading, setLoading] = useState(false)
@@ -47,19 +47,7 @@ export default function RegistrationPage() {
 
       const data = await res.json()
       if (res.ok) {
-        alert("Form submitted successfully!")
-        setFormData({
-          name: "",
-          workEmail: "",
-          phoneNumber: "",
-          companyName: "",
-          industry: "",
-          jobTitle: "",
-          businessType: "",
-          message: "",
-          termsAccepted: false,
-          marketingConsent: false,
-        })
+        window.location.href = "/registration/thankyou"
       } else {
         alert("Submission failed: " + data.error)
       }
@@ -74,7 +62,7 @@ export default function RegistrationPage() {
   return (
     <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mt-20 mb-16">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
-        <div>
+        <div className="relative z-50">
           <h1 className="text-xl lg:text-2xl font-semibold text-black mb-6">
             Fill the details below to enquire about the event
           </h1>
@@ -131,13 +119,13 @@ export default function RegistrationPage() {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <Label>Industry</Label>
               <Select value={formData.industry} onValueChange={(value) => handleInputChange("industry", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Industry" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-50">
                   <SelectItem value="real-estate">Real Estate</SelectItem>
                   <SelectItem value="construction">Construction</SelectItem>
                   <SelectItem value="finance">Finance</SelectItem>
@@ -157,13 +145,13 @@ export default function RegistrationPage() {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <Label>Select Request Type</Label>
               <Select value={formData.businessType} onValueChange={(value) => handleInputChange("businessType", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Request Type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-50">
                   <SelectItem value="developer">Developer</SelectItem>
                   <SelectItem value="investor">Investor</SelectItem>
                   <SelectItem value="broker">Broker</SelectItem>
@@ -203,9 +191,7 @@ export default function RegistrationPage() {
                   onCheckedChange={(checked) => handleInputChange("marketingConsent", checked as boolean)}
                 />
                 <Label htmlFor="marketing" className="text-sm leading-relaxed">
-                  BPE may contact you from time to time with updates and information about our events, products and
-                  services that may be of interest. We may also pass your details to carefully selected third parties
-                  to services and exhibition at this event.
+                  BPE may contact you with updates & offers. Your data may be shared with selected third parties.
                 </Label>
               </div>
             </div>
