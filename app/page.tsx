@@ -58,10 +58,10 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#00620F] mb-6">About Us</h2>
               <p className="text-gray-700 mb-4">
-                Welcome to the <strong>Bengaluru Plot Expo 2025</strong> — the city's largest and most exclusive real estate showcase dedicated entirely to plot and farmland investments.
+                Welcome to the <strong className="text-[#00620F]">Bengaluru Plot Expo 2025</strong> — the city's largest and most exclusive real estate showcase dedicated entirely to plot and farmland investments.
               </p>
               <p className="text-gray-700 mb-6">
-                This two-day mega event is designed to bring together leading developers, land aggregators, and investors under one roof. Whether you're looking to showcase your plotted development, reach a premium audience, or connect with potential buyers, <strong>BPE 2025</strong> offers the perfect platform.
+                This two-day mega event is designed to bring together leading developers, land aggregators, and investors under one roof. Whether you're looking to showcase your plotted development, reach a premium audience, or connect with potential buyers, <strong className="text-[#00620F]">BPE 2025</strong> offers the perfect platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button variant="outline" className="border-[#00620F] text-[#00620F] hover:bg-green-50">Know More</Button>

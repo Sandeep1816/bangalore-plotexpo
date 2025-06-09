@@ -119,13 +119,14 @@ export default function RegistrationPage() {
               />
             </div>
 
-            <div className="relative">
+            {/* Fixed dropdown overlap - Industry */}
+            <div className="relative z-40">
               <Label>Industry</Label>
               <Select value={formData.industry} onValueChange={(value) => handleInputChange("industry", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Industry" />
                 </SelectTrigger>
-                <SelectContent className="z-50">
+                <SelectContent className="z-50 bg-white">
                   <SelectItem value="real-estate">Real Estate</SelectItem>
                   <SelectItem value="construction">Construction</SelectItem>
                   <SelectItem value="finance">Finance</SelectItem>
@@ -145,13 +146,14 @@ export default function RegistrationPage() {
               />
             </div>
 
-            <div className="relative">
+            {/* Fixed dropdown overlap - Request Type */}
+            <div className="relative z-40">
               <Label>Select Request Type</Label>
               <Select value={formData.businessType} onValueChange={(value) => handleInputChange("businessType", value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Request Type" />
                 </SelectTrigger>
-                <SelectContent className="z-50">
+                <SelectContent className="z-50 bg-white">
                   <SelectItem value="developer">Developer</SelectItem>
                   <SelectItem value="investor">Investor</SelectItem>
                   <SelectItem value="broker">Broker</SelectItem>
