@@ -34,9 +34,22 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-green-200 font-semibold transition-colors">
             About Us
           </Link>
-          <Link href="/past-event" className="hover:text-green-200 font-semibold transition-colors">
-            Past Event
-          </Link>
+<Link
+  href="/registration?type=exhibitor"
+  className="block text-lg font-semibold hover:text-green-200"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Exhibitor Registration
+</Link>
+
+<Link
+  href="/registration?type=visitor"
+  className="block text-lg font-semibold hover:text-green-200"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Visitor Registration
+</Link>
+
         </div>
 
         {/* Right: CTA & Toggle */}
@@ -83,6 +96,22 @@ export default function Navbar() {
           >
             Past Event
           </Link>
+
+          <Link
+  href="/registration?type=exhibitor"
+  className="block text-lg font-semibold hover:text-green-200"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Exhibitor Registration
+</Link>
+
+<Link
+  href="/registration?type=visitor"
+  className="block text-lg font-semibold hover:text-green-200"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Visitor Registration
+</Link>
           <Button
             asChild
             className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold py-3"

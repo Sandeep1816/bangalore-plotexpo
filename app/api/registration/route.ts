@@ -3,6 +3,14 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
+    const url = new URL(req.url);
+    const typeParam = url.searchParams.get("type") || "";
+
+    // Normalize type
+    let typeLabel = "Enquiry Registration"; // Default
+    if (typeParam === "exhibitor") typeLabel = "Exhibitor Registration";
+    else if (typeParam === "visitor") typeLabel = "Visitor Registration";
+
     const {
       name,
       workEmail,
@@ -16,12 +24,12 @@ export async function POST(req: NextRequest) {
       marketingConsent,
     } = await req.json();
 
-    // Ensure required fields are present
+    // Validate required fields
     if (!name || !workEmail || !phoneNumber || !companyName || !jobTitle || !termsAccepted) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Create transport
+    // Set up email transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -30,13 +38,13 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Mail content
+    // Email content
     const mailOptions = {
-      from: `"BPE " <${process.env.EMAIL_USER}>`,
-      to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com", // Replace as needed
-      subject: "BPE Registration Enquiry",
+      from: `"BPE" <${process.env.EMAIL_USER}>`,
+      to: "avalasandeep02@gmail.com", // Update with additional recipients if needed
+      subject: `New ${typeLabel} - BPE`,
       html: `
-        <h3>BPE Registration</h3> 
+        <h2>BPE - ${typeLabel}</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${workEmail}</p>
         <p><strong>Phone Number:</strong> ${phoneNumber}</p>
