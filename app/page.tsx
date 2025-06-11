@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, UserPlus, Megaphone, Layers, Building, Eye, 
 import { zenTokyoZoo } from './fonts'; // adjust path if needed
 import { motion } from "framer-motion";
 import StatsSection from "./components/StatsSection";
+import PastSponsors from "./components/PastSponsors";
 
 const container = {
   hidden: { opacity: 0 },
@@ -142,7 +143,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Past Sponsors Section */}
+      {/* Past Sponsors Section
       <div className="text-center mb-6">
         <h2 className="text-3xl md:text-4xl font-bold text-[#00620F]">Past Sponsors</h2>
       </div>
@@ -174,7 +175,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <PastSponsors />
 
       {/* Past Events Section */}
       <section className="py-16 bg-white">

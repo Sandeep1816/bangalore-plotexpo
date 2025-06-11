@@ -48,7 +48,15 @@ export default function Footer() {
             {/* Contact Section */}
             <div>
               <h3 className="font-semibold text-lg mb-4">Contact</h3>
-              <p className="text-sm mb-4">9845114655</p>
+  {/* Clickable Phone Number */}
+  <p className="text-sm mb-4">
+    <a href="tel:9845114655" className="hover:text-green-200">9845114655</a>
+  </p>
+
+  {/* Clickable Email Address */}
+  <p className="text-sm mb-4">
+    <a href="mailto:annu@mindsquaremedia.com" className="hover:text-green-200">annu@mindsquaremedia.com</a>
+  </p>
 
               <div className="flex space-x-3 mb-6">
                 <Link href="#" className="hover:text-green-200"><Twitter size={20} /></Link>

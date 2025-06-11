@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     // Mail content
     const mailOptions = {
       from: `"BPE " <${process.env.EMAIL_USER}>`,
-      to: "avalasandeep02@gmail.com", // Replace as needed
+      to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com", // Replace as needed
       subject: "BPE Registration Enquiry",
       html: `
         <h3>BPE Registration</h3> 
