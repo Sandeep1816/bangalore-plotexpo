@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     // Email content
     const mailOptions = {
       from: `"BPE" <${process.env.EMAIL_USER}>`,
-      to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com", // Update with additional recipients if needed
+      to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com", // Update with additional recipients if neededwyqtj
       subject: `New ${typeLabel} - BPE`,
       html: `
         <h2>BPE - ${typeLabel}</h2>
