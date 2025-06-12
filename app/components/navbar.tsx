@@ -34,6 +34,9 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-green-200 font-semibold transition-colors">
             About Us
           </Link>
+                    <Link href="/past-event" className="hover:text-green-200 font-semibold transition-colors">
+            Past Events
+          </Link>
 <Link
   href="/registration?type=exhibitor"
   className="block text-lg font-semibold hover:text-green-200"

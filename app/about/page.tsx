@@ -1,13 +1,27 @@
 import { Button } from "@/app/components/ui/button"
+import Link from "next/link"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-12">
       {/* Hero Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-green-100 to-green-200 h-80 rounded-lg"></div>
+            {/* Replaced Image with Video (larger size) */}
+            <div className="w-full h-96 lg:h-[500px] rounded-lg overflow-hidden">
+              <video
+                className="w-full h-full object-cover rounded-lg"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="/videos/WhatsApp Video 2025-06-12 at 12.23.03.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-green-700 mb-6">About Us</h1>
               <p className="text-gray-700 mb-4 text-lg">
@@ -20,10 +34,14 @@ export default function AboutPage() {
                 audience, or connect with potential buyers, <strong className="text-[#00620F]">BPE 2025</strong> offers the perfect platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                      <Link href="/about" passHref>
                 <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">
                   Know More
                 </Button>
-                <Button className="bg-green-700 hover:bg-green-800">Exhibit</Button>
+                </Link>
+                <Link href="/registration?type=exhibitor" passHref>
+  <Button className="bg-green-700 hover:bg-green-800">Exhibit</Button>
+</Link>
               </div>
             </div>
           </div>
@@ -40,18 +58,10 @@ export default function AboutPage() {
               <div className="bg-green-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold text-green-700 mb-4">When & Where</h3>
                 <div className="space-y-2 text-gray-700">
-                  <p>
-                    <strong>Date:</strong> 26-27 July 2025
-                  </p>
-                  <p>
-                    <strong>Venue:</strong> White House Convention Centre
-                  </p>
-                  <p>
-                    <strong>Location:</strong> HSR Layout Next to BDA Complex
-                  </p>
-                  <p>
-                    <strong>City:</strong> Bengaluru, Karnataka
-                  </p>
+                  <p><strong>Date:</strong> 26-27 July 2025</p>
+                  <p><strong>Venue:</strong> White House Convention Centre</p>
+                  <p><strong>Location:</strong> HSR Layout Next to BDA Complex</p>
+                  <p><strong>City:</strong> Bengaluru, Karnataka</p>
                 </div>
               </div>
 

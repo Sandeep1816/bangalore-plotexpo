@@ -7,6 +7,7 @@ import { zenTokyoZoo } from './fonts'; // adjust path if needed
 import { motion } from "framer-motion";
 import StatsSection from "./components/StatsSection";
 import PastSponsors from "./components/PastSponsors";
+import AboutPage from "./about/page";
 
 const container = {
   hidden: { opacity: 0 },
@@ -50,7 +51,7 @@ export default function HomePage() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
             <div>
@@ -71,7 +72,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <AboutPage />
 
       {/* Stats Section */}
 
@@ -143,57 +146,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Past Sponsors Section
-      <div className="text-center mb-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#00620F]">Past Sponsors</h2>
-      </div>
-      <section className="py-12 bg-[#00620F]">
-        <div className="container mx-auto px-2">
-          <div className="relative">
-            <div className="flex items-center justify-between">
-              <button className="text-white hover:text-green-200 hidden md:block">
-                <ChevronLeft size={28} />
-              </button>
 
-              <div className="flex gap-3 overflow-x-auto md:grid md:grid-cols-5 flex-1 mx-4 scrollbar-hide">
-                {[
-                  '/images/past-sponsor/sbi.png',
-                  '/images/past-sponsor/rd.png',
-                  '/images/past-sponsor/ts.png',
-                  '/images/past-sponsor/h.png',
-                  '/images/past-sponsor/gl.png',
-                ].map((src, index) => (
-                  <div key={index} className="bg-white p-2 rounded-md aspect-square flex items-center justify-center min-w-[80px] md:min-w-0">
-                    <img src={src} alt={`Sponsor ${index + 1}`} className="max-h-full max-w-full object-contain" />
-                  </div>
-                ))}
-              </div>
-
-              <button className="text-white hover:text-green-200 hidden md:block">
-                <ChevronRight size={28} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <PastSponsors />
 
       {/* Past Events Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-700 text-center mb-12">Past Event</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              'bpe1.png', 'bpe2.png', 'bpe3.png', 'bpe4.png', 'bpe5.png', 'bpe6.png'
-            ].map((img, i) => (
-              <div key={i} className="rounded-lg overflow-hidden aspect-square">
-                <img src={`/images/past-events/${img}`} alt={`Event ${i + 1}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
+<section className="py-16 bg-white">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl md:text-4xl font-bold text-green-700 text-center mb-12">Past Event</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {['bpe1.png', 'bpe2.png', 'bpe3.png', 'bpe4.png', 'bpe5.png', 'bpe6.png'].map((img, i) => (
+        <div key={i} className="rounded-lg overflow-hidden aspect-square">
+          <img src={`/images/past-events/${img}`} alt={`Event ${i + 1}`} className="w-full h-full object-cover" />
         </div>
-      </section>
+      ))}
+    </div>
+    <div className="text-center mt-10">
+      <Link href="/past-event" passHref>
+        <Button className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-md">
+          View All
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }
