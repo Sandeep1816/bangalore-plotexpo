@@ -42,8 +42,8 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `BPE <${process.env.EMAIL_USER}>`,
-      // to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com",
-      to: "avalasandeep02@gmail.com",
+      to: "avalasandeep02@gmail.com,annu@mindsquaremedia.com",
+      // to: "avalasandeep02@gmail.com",
       subject: `New ${typeLabel} - BPE`,
       html: `
         <h2>BPE - ${typeLabel}</h2>
