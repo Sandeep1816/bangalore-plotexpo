@@ -46,7 +46,7 @@ export default function RegistrationForm({ type }: { type: string }) {
     setLoading(true)
 
     try {
-      const res = await fetch(`/api/registration${window.location.search}`, {
+      const res = await fetch(`/api/registration?type=${type}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -54,7 +54,7 @@ export default function RegistrationForm({ type }: { type: string }) {
 
       const data = await res.json()
       if (res.ok) {
-        window.location.href = "/registration/thankyou" + window.location.search
+        window.location.href = `/registration/thankyou?type=${type}`
       } else {
         alert("Submission failed: " + data.error)
       }
