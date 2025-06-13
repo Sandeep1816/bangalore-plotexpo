@@ -1,4 +1,3 @@
-// app/components/RegistrationForm.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -32,8 +31,8 @@ export default function RegistrationForm({ type }: { type: string }) {
     marketingConsent: true,
     type: "",
   });
-  const router = useRouter();
 
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -78,7 +77,7 @@ export default function RegistrationForm({ type }: { type: string }) {
             {type === "exhibitor" && "Exhibitor Registration"}
             {type === "visitor" && "Visitor Registration"}
             {type === "delegate" && "Delegate Registration"}
-            {type === "sponsor" && "Sponsor Registration"}
+            {type === "enquiry" && "Enquiry Form"}
             {!type && "General Enquiry Form"}
           </h1>
 
@@ -108,23 +107,21 @@ export default function RegistrationForm({ type }: { type: string }) {
             </div>
 
             {type === "visitor" && (
-              <div>
-                <Label htmlFor="workEmail">Email</Label>
-                <Input
-                  id="workEmail"
-                  type="email"
-                  placeholder="Email Address"
-                  value={formData.workEmail}
-                  onChange={(e) =>
-                    handleInputChange("workEmail", e.target.value)
-                  }
-                  required
-                />
-              </div>
-            )}
-
-            {type === "visitor" && (
               <>
+                <div>
+                  <Label htmlFor="workEmail">Email</Label>
+                  <Input
+                    id="workEmail"
+                    type="email"
+                    placeholder="Email Address"
+                    value={formData.workEmail}
+                    onChange={(e) =>
+                      handleInputChange("workEmail", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
                 <div>
                   <Label htmlFor="budget">Budget</Label>
                   <Input
@@ -212,6 +209,50 @@ export default function RegistrationForm({ type }: { type: string }) {
                       </SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+              </>
+            )}
+
+            {type === "enquiry" && (
+              <>
+                <div>
+                  <Label htmlFor="workEmail">Work Email</Label>
+                  <Input
+                    id="workEmail"
+                    type="email"
+                    placeholder="Work Email Address"
+                    value={formData.workEmail}
+                    onChange={(e) =>
+                      handleInputChange("workEmail", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="companyName">Company Name</Label>
+                  <Input
+                    id="companyName"
+                    placeholder="Company Name"
+                    value={formData.companyName}
+                    onChange={(e) =>
+                      handleInputChange("companyName", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="jobTitle">Job Title</Label>
+                  <Input
+                    id="jobTitle"
+                    placeholder="Job Title"
+                    value={formData.jobTitle}
+                    onChange={(e) =>
+                      handleInputChange("jobTitle", e.target.value)
+                    }
+                    required
+                  />
                 </div>
               </>
             )}

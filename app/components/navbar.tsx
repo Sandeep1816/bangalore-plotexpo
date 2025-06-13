@@ -62,7 +62,7 @@ export default function Navbar() {
               asChild
               className="bg-white text-green-700 hover:bg-gray-100 font-semibold px-6"
             >
-              <Link href="/registration">BOOK YOUR STALL</Link>
+              <Link href="/registration?type=enquiry">Contact Us</Link>
             </Button>
           </div>
           <button

@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
       budget = "",
     } = data;
 
+    // Generate visitor pass only for visitors
     const visitorPassId =
       type === "visitor"
         ? `BPE-${crypto.randomBytes(3).toString("hex").toUpperCase()}`
@@ -38,7 +39,7 @@ export async function POST(req: NextRequest) {
       timeZone: "Asia/Kolkata",
     });
 
-    // Prepare Excel data
+    // Prepare Excel Data
     const sheetHeader = [
       "Visitor Pass ID",
       "Name",
@@ -81,7 +82,7 @@ export async function POST(req: NextRequest) {
     const filePath = path.join(os.tmpdir(), `${type}-registration.xlsx`);
     await writeFile(filePath, buffer);
 
-    // Setup Mailer
+    // Mail Transporter
     const transporter = nodemailer.createTransport({
       host: "mail.maxpo.ae",
       port: 465,
@@ -92,8 +93,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Admin Email
+    // Capitalized type for email title
     const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
+
     let adminEmailHtml = `
       <h2>New ${capitalizedType} Registration</h2>
       ${visitorPassId ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>` : ""}
@@ -112,13 +114,13 @@ export async function POST(req: NextRequest) {
       <p><strong>Submitted At:</strong> ${submittedAt}</p>
     `;
 
-    // Send to admin
+    // Send admin email
     await transporter.sendMail({
-      // from: `"Bengaluru Plot Expo 2025" <${process.env.EMAIL_USER!}>`,
-       from:"Bengaluru Plot Expo 2025<no-reply@maxpo.ae>",
+      from: "Bengaluru Plot Expo 2025 <no-reply@maxpo.ae>",
       to: process.env.TO_USER!,
       subject: `New ${capitalizedType} Registration - ${name}`,
       html: adminEmailHtml,
+      // Uncomment this if you want to send Excel file
       // attachments: [
       //   {
       //     filename: `${type}-registration.xlsx`,
@@ -127,11 +129,10 @@ export async function POST(req: NextRequest) {
       // ],
     });
 
-    // Send to visitor
+    // Send visitor confirmation email
     if (type === "visitor" && workEmail && visitorPassId) {
       await transporter.sendMail({
-        // from: `"Bengaluru Plot Expo 2025" <${process.env.EMAIL_USER!}>`,
-        from:"Bengaluru Plot Expo 2025<no-reply@maxpo.ae>",
+        from: "Bengaluru Plot Expo 2025 <no-reply@maxpo.ae>",
         to: workEmail,
         subject: `Your Visitor Pass - ${EVENT_NAME}`,
         html: ThankYouEmailHandler({ name, visitorPassId }),
