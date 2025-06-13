@@ -34,14 +34,18 @@ export const ThankYouEmailHandler = ({
           <tr>
             <td style="padding: 40px 30px; text-align: center;">
               <p style="font-size: 18px;"><strong>Hey ${name?.split(" ")[0] || "there"},</strong></p>
-              <p>Thank you for registering for <strong style="color: #00214d;">${EVENT_NAME}</strong> on <strong style="color: #fdb714;">${EVENT_DATE}</strong>.</p>
-              <p>Please find your visitor pass ID below:</p>
+<p>Thank you for registering for <strong style="color: #00214d;">${EVENT_NAME}</strong> on <strong style="color: #fdb714;">${EVENT_DATE}</strong>.</p>
+<p>You are personally invited to attend this special event — we're excited to welcome you!</p>
+<p>Please find your visitor pass ID below:</p>
+
+
 
               <div style="background: #fff6e0; padding: 20px; border-radius: 8px; border-left: 4px solid #fdb714; margin: 30px 0;">
                 <p style="margin: 0; font-size: 24px; font-weight: bold; color: #00214d;">${visitorPassId}</p>
               </div>
 
-              <p>Someone from our team will contact you soon. Keep this pass ID safe.</p>
+          <p><strong>Note:</strong> Carry this pass while coming to the exhibition.</p>
+
 
               <table style="margin: 20px auto;">
                 <tr>

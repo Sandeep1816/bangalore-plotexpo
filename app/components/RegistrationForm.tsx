@@ -1,81 +1,85 @@
-'use client'
+// app/components/RegistrationForm.tsx
+"use client";
 
-import React, { useState, useEffect } from "react"
-import { Button } from "@/app/components/ui/button"
-import { Input } from "@/app/components/ui/input"
-import { Label } from "@/app/components/ui/label"
-import { Textarea } from "@/app/components/ui/textarea"
-import { Checkbox } from "@/app/components/ui/checkbox"
+import React, { useState, useEffect } from "react";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import { Label } from "@/app/components/ui/label";
+import { Textarea } from "@/app/components/ui/textarea";
+import { Checkbox } from "@/app/components/ui/checkbox";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/app/components/ui/select"
+} from "@/app/components/ui/select";
+import { useRouter } from "next/navigation";
 
 export default function RegistrationForm({ type }: { type: string }) {
   const [formData, setFormData] = useState({
     name: "",
-    workEmail: "",
     phoneNumber: "",
+    workEmail: "",
     companyName: "",
     industry: "",
     jobTitle: "",
     businessType: "",
+    budget: "",
+    bangalorePart: "",
     message: "",
     termsAccepted: true,
     marketingConsent: true,
     type: "",
-  })
+  });
+  const router = useRouter();
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (type) {
-      setFormData((prev) => ({ ...prev, type }))
+      setFormData((prev) => ({ ...prev, type }));
     }
-  }, [type])
+  }, [type]);
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
       const res = await fetch(`/api/registration?type=${type}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
       if (res.ok) {
-        window.location.href = `/registration/thankyou?type=${type}`
+        router.push(`/registration/thankyou?type=${type}`);
       } else {
-        alert("Submission failed: " + data.error)
+        alert("Submission failed: " + data.error);
       }
     } catch (error) {
-      alert("An error occurred. Please try again later.")
-      console.error("Submission error:", error)
+      alert("An error occurred. Please try again later.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mt-20 mb-16">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
-        <div className="relative z-50">
+        <div>
           <h1 className="text-xl lg:text-2xl font-semibold text-black mb-6">
             {type === "exhibitor" && "Exhibitor Registration"}
             {type === "visitor" && "Visitor Registration"}
             {type === "delegate" && "Delegate Registration"}
             {type === "sponsor" && "Sponsor Registration"}
-            {!type && "Fill the details below to enquire about the event"}
+            {!type && "General Enquiry Form"}
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -91,91 +95,168 @@ export default function RegistrationForm({ type }: { type: string }) {
             </div>
 
             <div>
-              <Label htmlFor="workEmail">Work Email</Label>
+              <Label htmlFor="phoneNumber">Phone Number</Label>
               <Input
-                id="workEmail"
-                type="email"
-                placeholder="Work Email Address"
-                value={formData.workEmail}
-                onChange={(e) => handleInputChange("workEmail", e.target.value)}
+                id="phoneNumber"
+                placeholder="Phone Number"
+                value={formData.phoneNumber}
+                onChange={(e) =>
+                  handleInputChange("phoneNumber", e.target.value)
+                }
                 required
               />
             </div>
 
-            <div>
-              <Label htmlFor="phoneNumber">Phone Number</Label>
-              <div className="flex">
-                <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-100 text-sm text-gray-600 rounded-l-md">
-                  +91
-                </span>
+            {type === "visitor" && (
+              <div>
+                <Label htmlFor="workEmail">Email</Label>
                 <Input
-                  id="phoneNumber"
-                  placeholder="Phone Number"
-                  className="rounded-l-none"
-                  value={formData.phoneNumber}
-                  onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                  id="workEmail"
+                  type="email"
+                  placeholder="Email Address"
+                  value={formData.workEmail}
+                  onChange={(e) =>
+                    handleInputChange("workEmail", e.target.value)
+                  }
                   required
                 />
               </div>
-            </div>
+            )}
 
-            <div>
-              <Label htmlFor="companyName">Company Name</Label>
-              <Input
-                id="companyName"
-                placeholder="Company Name"
-                value={formData.companyName}
-                onChange={(e) => handleInputChange("companyName", e.target.value)}
-                required
-              />
-            </div>
+            {type === "visitor" && (
+              <>
+                <div>
+                  <Label htmlFor="budget">Budget</Label>
+                  <Input
+                    id="budget"
+                    placeholder="Your budget"
+                    value={formData.budget}
+                    onChange={(e) =>
+                      handleInputChange("budget", e.target.value)
+                    }
+                    required
+                  />
+                </div>
 
-            <div className="relative z-40">
-              <Label>Industry</Label>
-              <Select
-                value={formData.industry}
-                onValueChange={(value) => handleInputChange("industry", value)}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select Industry" />
-                </SelectTrigger>
-                <SelectContent className="z-50 bg-white">
-                  <SelectItem value="real-estate">Real Estate</SelectItem>
-                  <SelectItem value="construction">Construction</SelectItem>
-                  <SelectItem value="finance">Finance</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+                <div>
+                  <Label>Select Area in Bangalore</Label>
+                  <Select
+                    value={formData.bangalorePart}
+                    onValueChange={(value) =>
+                      handleInputChange("bangalorePart", value)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Region" />
+                    </SelectTrigger>
+                    <SelectContent className="z-50 bg-white">
+                      <SelectItem value="east">East Bangalore</SelectItem>
+                      <SelectItem value="west">West Bangalore</SelectItem>
+                      <SelectItem value="north">North Bangalore</SelectItem>
+                      <SelectItem value="south">South Bangalore</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
 
-            <div>
-              <Label htmlFor="jobTitle">Job Title</Label>
-              <Input
-                id="jobTitle"
-                placeholder="Job Title"
-                value={formData.jobTitle}
-                onChange={(e) => handleInputChange("jobTitle", e.target.value)}
-                required
-              />
-            </div>
+            {type === "exhibitor" && (
+              <>
+                <div>
+                  <Label htmlFor="workEmail">Work Email</Label>
+                  <Input
+                    id="workEmail"
+                    type="email"
+                    placeholder="Work Email Address"
+                    value={formData.workEmail}
+                    onChange={(e) =>
+                      handleInputChange("workEmail", e.target.value)
+                    }
+                    required
+                  />
+                </div>
 
-            <div className="relative z-40">
-              <Label>Select Request Type</Label>
-              <Select
-                value={formData.businessType}
-                onValueChange={(value) => handleInputChange("businessType", value)}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select Request Type" />
-                </SelectTrigger>
-                <SelectContent className="z-50 bg-white">
-                  <SelectItem value="developer">Developer</SelectItem>
-                  <SelectItem value="investor">Investor</SelectItem>
-                  <SelectItem value="broker">Broker</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+                <div>
+                  <Label htmlFor="companyName">Company Name</Label>
+                  <Input
+                    id="companyName"
+                    placeholder="Company Name"
+                    value={formData.companyName}
+                    onChange={(e) =>
+                      handleInputChange("companyName", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label>Industry</Label>
+                  <Select
+                    value={formData.industry}
+                    onValueChange={(value) =>
+                      handleInputChange("industry", value)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Industry" />
+                    </SelectTrigger>
+                    <SelectContent className="z-50 bg-white">
+                      <SelectItem value="real-estate">Real Estate</SelectItem>
+                      <SelectItem value="farmland">Farmland</SelectItem>
+                      <SelectItem value="builder">Builder</SelectItem>
+                      <SelectItem value="developer">Developer</SelectItem>
+                      <SelectItem value="finance">Finance</SelectItem>
+                      <SelectItem value="channel-partner">
+                        Channel Partner (CP)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
+
+            {!type && (
+              <>
+                <div>
+                  <Label htmlFor="workEmail">Work Email</Label>
+                  <Input
+                    id="workEmail"
+                    type="email"
+                    placeholder="Work Email Address"
+                    value={formData.workEmail}
+                    onChange={(e) =>
+                      handleInputChange("workEmail", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="companyName">Company Name</Label>
+                  <Input
+                    id="companyName"
+                    placeholder="Company Name"
+                    value={formData.companyName}
+                    onChange={(e) =>
+                      handleInputChange("companyName", e.target.value)
+                    }
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="jobTitle">Job Title</Label>
+                  <Input
+                    id="jobTitle"
+                    placeholder="Job Title"
+                    value={formData.jobTitle}
+                    onChange={(e) =>
+                      handleInputChange("jobTitle", e.target.value)
+                    }
+                  />
+                </div>
+              </>
+            )}
 
             <div>
               <Label htmlFor="message">Message (if any)</Label>
@@ -193,11 +274,15 @@ export default function RegistrationForm({ type }: { type: string }) {
                 <Checkbox
                   id="terms"
                   checked={formData.termsAccepted}
-                  onCheckedChange={(checked) => handleInputChange("termsAccepted", checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("termsAccepted", checked as boolean)
+                  }
                 />
                 <Label htmlFor="terms" className="text-sm leading-relaxed">
-                  I confirm that I have read, understand and accept the event's{" "}
-                  <a href="/terms" className="text-green-700 underline">Terms and Conditions</a>
+                  I accept the{" "}
+                  <a href="/terms" className="text-green-700 underline">
+                    Terms and Conditions
+                  </a>
                 </Label>
               </div>
 
@@ -205,10 +290,13 @@ export default function RegistrationForm({ type }: { type: string }) {
                 <Checkbox
                   id="marketing"
                   checked={formData.marketingConsent}
-                  onCheckedChange={(checked) => handleInputChange("marketingConsent", checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("marketingConsent", checked as boolean)
+                  }
                 />
                 <Label htmlFor="marketing" className="text-sm leading-relaxed">
-                  BPE may contact you with updates & offers. Your data may be shared with selected third parties.
+                  BPE may contact you with updates & offers. Your data may be
+                  shared with selected third parties.
                 </Label>
               </div>
             </div>
@@ -234,5 +322,5 @@ export default function RegistrationForm({ type }: { type: string }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

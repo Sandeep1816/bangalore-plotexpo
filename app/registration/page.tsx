@@ -235,8 +235,6 @@
 //   )
 // }
 
-
-// app/registration/page.tsx
 'use client'
 
 import React, { Suspense } from "react"
@@ -256,3 +254,4 @@ export default function RegistrationPage() {
     </Suspense>
   )
 }
+
