@@ -42,19 +42,19 @@ export default function PastSponsors() {
       </div>
 
       {/* Scrolling Logos */}
-      <section className="py-12 bg-[#00620F] overflow-hidden relative">
+      <section className="py-12 bg-[#00620F] overflow-hidden relative group">
         <div className="w-full whitespace-nowrap overflow-hidden">
-          <div className="inline-flex gap-6 animate-marquee">
+          <div className="inline-flex gap-6 animate-marquee group-hover:paused">
             {[...sponsorLogos, ...sponsorLogos].map((src, index) => (
               <div
                 key={index}
-                className="bg-white p-2 md:p-3 rounded-md h-[60px] w-[60px] md:h-[80px] md:w-[80px] flex items-center justify-center shrink-0"
+                className="bg-white p-3 md:p-4 rounded-md h-[120px] w-[120px] flex items-center justify-center shrink-0 transition-transform hover:scale-105"
               >
                 <Image
                   src={src}
                   alt={`Sponsor ${index + 1}`}
-                  width={60}
-                  height={60}
+                  width={120}
+                  height={120}
                   className="object-contain w-full h-full"
                 />
               </div>
@@ -72,8 +72,13 @@ export default function PastSponsors() {
               transform: translateX(-50%);
             }
           }
+
           .animate-marquee {
             animation: marquee 60s linear infinite;
+          }
+
+          .group:hover .animate-marquee {
+            animation-play-state: paused;
           }
 
           @media (max-width: 768px) {
