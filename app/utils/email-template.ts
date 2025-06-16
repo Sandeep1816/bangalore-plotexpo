@@ -37,12 +37,29 @@ export const ThankYouEmailHandler = ({
           </div>
           <p><strong>Note:</strong> Carry this pass while coming to the exhibition.</p>
           <table style="margin: 20px auto;">
-            <tr>
-              <td><a href="https://www.facebook.com/bengalurusplotexpo/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="24" /></a></td>
-              <td><a href="https://www.youtube.com/@BengaluruPlotExpo"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="24" /></a></td>
-              <td><a href="https://www.linkedin.com/showcase/bengaluru-plot-expo/"><img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" width="24" /></a></td>
-              <td><a href="https://www.instagram.com/bengaluru_plotexpo/"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="24" /></a></td>
-            </tr>
+<tr>
+  <td style="padding: 0 8px;">
+    <a href="https://www.facebook.com/bengalurusplotexpo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="24" height="24" style="vertical-align: middle;" />
+    </a>
+  </td>
+  <td style="padding: 0 8px;">
+    <a href="https://www.youtube.com/@BengaluruPlotExpo" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="24" height="24" style="vertical-align: middle;" />
+    </a>
+  </td>
+  <td style="padding: 0 8px;">
+    <a href="https://www.linkedin.com/showcase/bengaluru-plot-expo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn" width="24" height="24" style="vertical-align: middle;" />
+    </a>
+  </td>
+  <td style="padding: 0 8px;">
+    <a href="https://www.instagram.com/bengaluru_plotexpo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24" height="24" style="vertical-align: middle;" />
+    </a>
+  </td>
+</tr>
+
           </table>
         </td></tr>
         <tr><td style="background:#f5f5f5;padding:30px;text-align:center;border-top:1px solid #ddd;">
