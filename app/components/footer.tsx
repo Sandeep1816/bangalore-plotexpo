@@ -25,9 +25,9 @@ export default function Footer() {
               <h3 className="font-semibold text-lg mb-4">Event Information</h3>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/about" className="hover:text-green-200">About</Link></li>
-                <li><Link href="/conference" className="hover:text-green-200">Conference</Link></li>
-                <li><Link href="/exhibition" className="hover:text-green-200">Exhibition</Link></li>
-                <li><Link href="/exhibitors" className="hover:text-green-200">Exhibitors</Link></li>
+                <li><Link href="/past-event" className="hover:text-green-200">Past Event</Link></li>
+                <li><Link href="/past-event" className="hover:text-green-200">Exhibition</Link></li>
+                <li><Link href="/past-event" className="hover:text-green-200">Exhibitors</Link></li>
               </ul>
             </div>
 
@@ -35,13 +35,15 @@ export default function Footer() {
             <div>
               <h3 className="font-semibold text-lg mb-4">Participants</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/exhibition" className="hover:text-green-200">Exhibition</Link></li>
-                <li><Link href="/exhibitors" className="hover:text-green-200">Exhibitors</Link></li>
+                <li><Link href="/past-event" className="hover:text-green-200">Exhibition</Link></li>
+                <li><Link href="/past-event" className="hover:text-green-200">Exhibitors</Link></li>
               </ul>
 
               <h3 className="font-semibold text-lg mb-4 mt-6">Registration</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/registration" className="hover:text-green-200">Register as Exhibitor</Link></li>
+                <li><Link href="/registration?type=exhibitor" className="hover:text-green-200">Register as Exhibitor</Link></li>
+                 <li><Link href="/registration?type=visitor" className="hover:text-green-200">Register as Visitor</Link></li>
+                  <li><Link href="/registration?type=enquiry" className="hover:text-green-200">Enquiry</Link></li>
               </ul>
             </div>
 
