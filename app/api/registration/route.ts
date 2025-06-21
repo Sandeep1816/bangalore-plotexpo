@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     // Email Setup
     const transporter = nodemailer.createTransport({
-      host: "mail.maxpo.ae",
+      host: "maxpo.interactivedns.com",
       port: 465,
       secure: true,
       auth: {
