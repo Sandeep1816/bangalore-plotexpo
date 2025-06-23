@@ -42,7 +42,7 @@ export default function HomePage() {
 </h1>
 
             <div className="text-white mb-8 mt-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">26-27 July 2025</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">02 - 03 August 2025</h2>
               <p className="text-md sm:text-lg">White House Convention Centre</p>
               <p className="text-md sm:text-lg">HSR Layout Next to BDA Complex</p>
             </div>
