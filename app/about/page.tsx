@@ -58,7 +58,7 @@ export default function AboutPage() {
               <div className="bg-green-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold text-green-700 mb-4">When & Where</h3>
                 <div className="space-y-2 text-gray-700">
-                  <p><strong>Date:</strong> 26-27 July 2025</p>
+                  <p><strong>Date:</strong> 02 - 03 August 2025</p>
                   <p><strong>Venue:</strong> White House Convention Centre</p>
                   <p><strong>Location:</strong> HSR Layout Next to BDA Complex</p>
                   <p><strong>City:</strong> Bengaluru, Karnataka</p>
