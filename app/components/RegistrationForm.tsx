@@ -60,10 +60,11 @@ export default function RegistrationForm({ type }: { type: string }) {
       if (res.ok) {
         router.push(`/registration/thankyou?type=${type}`);
       } else {
-        alert("Submission failed: " + data.error);
+        console.log("Submission failed: " + data.error);
+        
       }
     } catch (error) {
-      alert("An error occurred. Please try again later.");
+      console.log("An error occurred. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -182,6 +183,21 @@ export default function RegistrationForm({ type }: { type: string }) {
                     value={formData.companyName}
                     onChange={(e) =>
                       handleInputChange("companyName", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+
+
+                                <div>
+                  <Label htmlFor="jobTitle">Job Title</Label>
+                  <Input
+                    id="jobTitle"
+                    placeholder="Job Title"
+                    value={formData.jobTitle}
+                    onChange={(e) =>
+                      handleInputChange("jobTitle", e.target.value)
                     }
                     required
                   />

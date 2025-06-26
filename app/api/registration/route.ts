@@ -97,12 +97,12 @@ export async function POST(req: NextRequest) {
       to: process.env.TO_USER!,
       subject: `New ${capitalizedType} Registration - ${name}`,
       html: adminEmailHtml,
-      attachments: [
-        {
-          filename: `${type}-registration.xlsx`,
-          path: filePath,
-        },
-      ],
+      // attachments: [
+      //   {
+      //     filename: `${type}-registration.xlsx`,
+      //     path: filePath,
+      //   },
+      // ],
     });
 
     if (type === "visitor" && workEmail && visitorPassId) {
