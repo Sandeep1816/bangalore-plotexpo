@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
+    "@blackbox-vision/react-qr-reader": "^5.0.0",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
@@ -24,7 +25,6 @@
     "qrcode": "^1.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-qr-reader": "^3.0.0-beta-1",
     "react-qr-scanner": "^1.0.0-alpha.11",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
