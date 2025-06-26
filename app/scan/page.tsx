@@ -52,64 +52,53 @@
 // }
 
 
+// app/scan/page.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Html5Qrcode } from "html5-qrcode";
+import { Html5QrcodeScanner } from "html5-qrcode";
 
 export default function QRScanner() {
   const [ticketId, setTicketId] = useState("");
-  const qrCodeRegionId = "qr-reader";
-  const scannedBy = "admin"; // Change as needed
-  const html5QrCodeRef = useRef<Html5Qrcode | null>(null);
+  const scannerRef = useRef<HTMLDivElement>(null);
+  const scannedBy = "admin"; // Replace with dynamic user if needed
 
   useEffect(() => {
-    const html5QrCode = new Html5Qrcode(qrCodeRegionId);
-    html5QrCodeRef.current = html5QrCode;
-
-    const config = {
+    const scanner = new Html5QrcodeScanner("qr-reader", {
       fps: 10,
       qrbox: { width: 250, height: 250 },
-    };
+    }, false); // 3rd argument is 'verbose', pass false
 
-    html5QrCode
-      .start(
-        { facingMode: "environment" }, // Use rear camera
-        config,
-        async (decodedText) => {
-          setTicketId(decodedText);
+    scanner.render(
+      async (decodedText, decodedResult) => {
+        setTicketId(decodedText);
 
-          try {
-            await fetch("/api/log-scan", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ ticketId: decodedText, scannedBy }),
-            });
-          } catch (err) {
-            console.error("Logging scan failed:", err);
-          }
-
-          await html5QrCode.stop();
-        },
-        (errorMessage) => {
-          console.warn("QR Error:", errorMessage);
+        try {
+          await fetch("/api/log-scan", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ticketId: decodedText, scannedBy }),
+          });
+        } catch (err) {
+          console.error("Error logging scan:", err);
         }
-      )
-      .catch((err) => {
-        console.error("Start failed:", err);
-      });
+
+        scanner.clear();
+      },
+      (errorMessage) => {
+        console.warn("QR Error:", errorMessage);
+      }
+    );
 
     return () => {
-      html5QrCodeRef.current?.stop().then(() => {
-        html5QrCode.clear();
-      });
+      scanner.clear().catch(() => {});
     };
   }, []);
 
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Scan QR</h2>
-      <div id={qrCodeRegionId} style={{ width: "100%" }} />
+      <div id="qr-reader" ref={scannerRef} style={{ width: "100%" }} />
       <div className="mt-4">
         <p>
           Ticket ID:{" "}
