@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Twitter, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Twitter, Instagram, Linkedin, MessageCircle, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -61,10 +61,10 @@ export default function Footer() {
   </p>
 
               <div className="flex space-x-3 mb-6">
-                <Link href="#" className="hover:text-green-200"><Twitter size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><Instagram size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><Linkedin size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><MessageCircle size={20} /></Link>
+                <Link href="https://x.com/PlotExpo" className="hover:text-green-200"><Twitter size={20} /></Link>
+                <Link href="https://www.instagram.com/bengaluru_plot_expo/" className="hover:text-green-200"><Instagram size={20} /></Link>
+                <Link href="https://www.linkedin.com/showcase/bengaluru-plot-expo/" className="hover:text-green-200"><Linkedin size={20} /></Link>
+                <Link href="https://www.youtube.com/@BengaluruPlotExpo" className="hover:text-green-200"><Youtube size={20} /></Link>
               </div>
 
               <div className="p-2 rounded ml-[-9px] ">

@@ -39,7 +39,7 @@ export const ThankYouEmailHandler = ({
           <table style="margin: 20px auto;">
 <tr>
   <td style="padding: 0 8px;">
-    <a href="https://www.facebook.com/bengalurusplotexpo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+    <a href="https://www.facebook.com/bengaluruplotexpo2025" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="24" height="24" style="vertical-align: middle;" />
     </a>
   </td>
@@ -54,7 +54,7 @@ export const ThankYouEmailHandler = ({
     </a>
   </td>
   <td style="padding: 0 8px;">
-    <a href="https://www.instagram.com/bengaluru_plotexpo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+    <a href="https://www.instagram.com/bengaluru_plot_expo/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e6e9ef; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24" height="24" style="vertical-align: middle;" />
     </a>
   </td>
