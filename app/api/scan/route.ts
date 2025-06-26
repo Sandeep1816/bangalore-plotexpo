@@ -24,14 +24,10 @@
 
 
 import { NextRequest, NextResponse } from "next/server";
-import { logScanToSheet } from "@/app/utils/googleSheet";
+import { logScanToSheet } from "@/app/utils/googleSheet"; // adjust path if needed
 
 export async function POST(req: NextRequest) {
   try {
-    if (req.headers.get("content-type") !== "application/json") {
-      return NextResponse.json({ error: "Unsupported content type" }, { status: 415 });
-    }
-
     const { ticketId, scannedBy } = await req.json();
 
     if (!ticketId || !scannedBy) {
@@ -46,3 +42,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+
