@@ -1,7 +1,7 @@
 export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
-import { logScanToSheet } from "@/app/utils/googleSheet"; // adjust path if needed
+import { logScanToSheet } from "@/app/utils/googleSheet";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,4 +19,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
-
