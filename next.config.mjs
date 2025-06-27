@@ -15,8 +15,8 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    serverComponentsExternalPackages: ["googleapis", "google-auth-library"],
+    serverComponentsExternalPackages: ["googleapis"],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

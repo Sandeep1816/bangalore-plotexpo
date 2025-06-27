@@ -1,3 +1,4 @@
+// app/api/scan/route.ts
 export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
