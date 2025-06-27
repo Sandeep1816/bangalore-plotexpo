@@ -23,7 +23,7 @@ export const ThankYouEmailHandler = ({
   <table width="100%" style="padding:20px 0;background:#f5f5f5">
     <tr><td align="center">
       <table width="600" style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
-        <tr><td><img src="https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/bdb4e3000146b3ca60b268a06562ab908f87e5491506b39afbf8ce182c020e80.jpg" style="width:100%" /></td></tr>
+        <tr><td><img src="https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/491630fd2e97298f9139bf3e786f90ac7fe65bc9f2007154672e8206995db176.jpg" style="width:100%" /></td></tr>
         <tr><td style="padding:40px 30px;text-align:center;">
           <p style="font-size:18px;"><strong>Hey ${name?.split(" ")[0] || "there"},</strong></p>
           <p>Thank you for registering for <strong style="color:#00214d;">${EVENT_NAME}</strong> on <strong style="color:#fdb714;">${EVENT_DATE}</strong>.</p>
