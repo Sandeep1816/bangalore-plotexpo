@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-dm-sans",
+});
 
 export const metadata: Metadata = {
   title: "Bangalore Plot Expo 2025",
@@ -18,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={dmSans.variable} suppressHydrationWarning>
       <head>
         {/* Google Site Verification */}
         <meta
@@ -60,8 +64,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={inter.className}>
-        {/* Google Tag Manager (noscript) */}
+      <body className="font-sans">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NH5W97WK"

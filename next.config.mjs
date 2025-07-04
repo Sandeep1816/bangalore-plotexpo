@@ -17,6 +17,10 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["googleapis"],
   },
+  images: {
+    domains: ["cdn.sanity.io"],
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
