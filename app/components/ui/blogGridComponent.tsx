@@ -45,7 +45,7 @@ export default function BlogGridClient({ posts }: BlogGridClientProps) {
 
   return (
     <div>
-      {/* Header */}
+      {/* Headers */}
 {/* Header */}
 <div className=" py-12 px-4 sm:px-6 md:px-10 flex items-center justify-center">
   <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#0C5400] text-center">
