@@ -53,6 +53,10 @@ export default function Navbar() {
   Visitor Registration
 </Link>
 
+          <Link href="/blogs" className="hover:text-green-200 font-semibold transition-colors">
+            Blogs
+          </Link>
+
         </div>
 
         {/* Right: CTA & Toggle */}
