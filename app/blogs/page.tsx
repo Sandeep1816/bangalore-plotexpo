@@ -1,8 +1,5 @@
-
-const revalidate=60
-
-import { getBlogPostsByProject } from "@/lib/blogs";
-import BlogGridClient from "../components/blogs";
+import BlogGridClient from "@/app/components/ui/blogGridComponent";
+import { getBlogPostsByProject } from "@/sanity/lib/blogs";
 
 export default async function NewsBlogGrid() {
   const posts = await getBlogPostsByProject("bpe");

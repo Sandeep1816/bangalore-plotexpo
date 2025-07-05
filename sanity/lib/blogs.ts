@@ -1,5 +1,9 @@
-import { client } from "./client";
-import { blogPostBySlug, blogPostsByProject } from "./queries";
+import { client } from "../client";
+import {
+  blogPostBySlug,
+  blogPostsByProject,
+  categoriesByProject,
+} from "../queries";
 import { SanityDocument } from "next-sanity";
 
 export async function getBlogPostsByProject(
@@ -11,6 +15,8 @@ export async function getBlogPostsByProject(
     { cache: "no-store" }
   );
 }
+
+
 
 export async function getBlogPostBySlug(slug: string) {
   const post = await client.fetch(

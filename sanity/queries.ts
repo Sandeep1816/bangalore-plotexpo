@@ -12,6 +12,11 @@ export const blogPostsByProject = `*[
   publishedAt
 }`;
 
+export const categoriesByProject = `*[
+  _type == "blogPost" &&
+  defined(slug.current) &&
+  project->slug.current == $slug
+].categories[]->title`;
 
 export const blogPostBySlug = `*[_type == "blogPost" && slug.current == $slug][0]{
     title,
