@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       message = "",
       termsAccepted,
       marketingConsent,
-      location = "",
+      bangalorePart = "",
       budget = "",
     } = data;
 
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     const sheetRow = [
       visitorPassId, name, workEmail, phoneNumber, companyName, industry,
-      jobTitle, businessType, message, budget, location,
+      jobTitle, businessType, message, budget, bangalorePart,
       termsAccepted ? "Yes" : "No",
       marketingConsent ? "Yes" : "No", submittedAt,
     ];
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
       ${jobTitle && `<p><strong>Job Title:</strong> ${jobTitle}</p>`}
       ${businessType && `<p><strong>Business Type:</strong> ${businessType}</p>`}
       ${budget && `<p><strong>Budget:</strong> ${budget}</p>`}
-      ${location && `<p><strong>Location:</strong> ${location}</p>`}
+     ${bangalorePart && `<p><strong>Location:</strong> ${bangalorePart}</p>`}
       ${message && `<p><strong>Message:</strong> ${message}</p>`}
       <p><strong>Terms Accepted:</strong> ${termsAccepted ? "Yes" : "No"}</p>
       <p><strong>Marketing Consent:</strong> ${marketingConsent ? "Yes" : "No"}</p>
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         type, visitorPassId, name, workEmail, phoneNumber, companyName, industry,
-        jobTitle, businessType, budget, location, message,
+        jobTitle, businessType, budget, bangalorePart, message,
         termsAccepted, marketingConsent, submittedAt,
       }),
     });
