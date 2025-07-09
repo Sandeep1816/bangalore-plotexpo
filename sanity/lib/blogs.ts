@@ -1,10 +1,11 @@
 import { client } from "../client";
+import type { SanityDocument } from "@sanity/client";
+
 import {
   blogPostBySlug,
   blogPostsByProject,
   categoriesByProject,
 } from "../queries";
-import { SanityDocument } from "next-sanity";
 
 export async function getBlogPostsByProject(
   slug: string
@@ -15,8 +16,6 @@ export async function getBlogPostsByProject(
     { cache: "no-store" }
   );
 }
-
-
 
 export async function getBlogPostBySlug(slug: string) {
   const post = await client.fetch(

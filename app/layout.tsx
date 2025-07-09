@@ -3,6 +3,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
+import { Toaster } from "react-hot-toast"; // ✅ Toast import
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -75,7 +76,12 @@ export default function RootLayout({
         </noscript>
 
         <Navbar />
+
+        {/* ✅ Toast container */}
+        <Toaster position="top-right" />
+
         <main>{children}</main>
+
         <Footer />
       </body>
     </html>

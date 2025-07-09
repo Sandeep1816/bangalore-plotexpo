@@ -17,8 +17,9 @@ export async function POST(req: NextRequest) {
 
     const {
       name,
-      workEmail = "",
+      
       phoneNumber = "",
+      workEmail = "",
       companyName = "",
       industry = "",
       jobTitle = "",
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
 
     // Excel Setup
     const sheetHeader = [
-      "Visitor Pass ID", "Name", "Email", "Phone", "Company", "Industry", "Job Title",
+      "Visitor Pass ID", "Name",  "Phone","Email", "Company", "Industry", "Job Title",
       "Business Type", "Message", "Budget", "Location", "Terms Accepted",
       "Marketing Consent", "Submitted At"
     ];
