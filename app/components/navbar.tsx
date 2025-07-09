@@ -124,7 +124,7 @@ export default function Navbar() {
             className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold py-3"
           >
             <Link href="/registration" onClick={() => setIsMenuOpen(false)}>
-              BOOK YOUR STALL
+              Contact Us
             </Link>
           </Button>
         </div>
