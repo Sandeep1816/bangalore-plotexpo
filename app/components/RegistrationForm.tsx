@@ -52,6 +52,14 @@ export default function RegistrationForm({ type }: { type: string }) {
         type === "exhibitor"
           ? Yup.string().required("Industry is required")
           : Yup.string(),
+      budget:
+        type === "visitor"
+          ? Yup.string().required("Budget is required")
+          : Yup.string(),
+      bangalorePart:
+        type === "visitor"
+          ? Yup.string().required("Area is required")
+          : Yup.string(),
       termsAccepted: Yup.boolean().oneOf(
         [true],
         "You must accept the terms and conditions"
@@ -95,7 +103,6 @@ export default function RegistrationForm({ type }: { type: string }) {
     <div className="max-w-[1440px] mx-auto px-4 lg:px-12 mt-20 mb-16 bg-gradient-to-br from-gray-100 via-white to-gray-100 rounded-xl shadow-xl p-4 md:p-8">
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
-          {/* FORM SECTION */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 lg:bg-transparent lg:shadow-none lg:border-none transition-all duration-300">
             <h1 className="text-xl lg:text-2xl font-semibold text-black mb-6">
               {type === "exhibitor" && "Exhibitor Registration"}
@@ -167,7 +174,9 @@ export default function RegistrationForm({ type }: { type: string }) {
             {type === "visitor" && (
               <>
                 <div>
-                  <Label htmlFor="budget">Budget</Label>
+                  <Label htmlFor="budget">
+                    Budget <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="budget"
                     name="budget"
@@ -175,10 +184,16 @@ export default function RegistrationForm({ type }: { type: string }) {
                     value={values.budget}
                     onChange={handleChange}
                   />
+                  {touched.budget && errors.budget && (
+                    <p className="text-sm text-red-600">{errors.budget}</p>
+                  )}
                 </div>
 
                 <div>
-                  <Label>Select Area in Bangalore</Label>
+                  <Label>
+                    Select Area in Bangalore{" "}
+                    <span className="text-red-500">*</span>
+                  </Label>
                   <Select
                     value={values.bangalorePart}
                     onValueChange={(val) =>
@@ -196,6 +211,11 @@ export default function RegistrationForm({ type }: { type: string }) {
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
+                  {touched.bangalorePart && errors.bangalorePart && (
+                    <p className="text-sm text-red-600">
+                      {errors.bangalorePart}
+                    </p>
+                  )}
                 </div>
               </>
             )}
@@ -277,7 +297,10 @@ export default function RegistrationForm({ type }: { type: string }) {
                     setFieldValue("termsAccepted", checked)
                   }
                 />
-                <Label htmlFor="termsAccepted" className="text-sm leading-relaxed">
+                <Label
+                  htmlFor="termsAccepted"
+                  className="text-sm leading-relaxed"
+                >
                   I accept the{" "}
                   <a href="/terms" className="text-green-700 underline">
                     Terms and Conditions
@@ -296,7 +319,10 @@ export default function RegistrationForm({ type }: { type: string }) {
                     setFieldValue("marketingConsent", checked)
                   }
                 />
-                <Label htmlFor="marketingConsent" className="text-sm leading-relaxed">
+                <Label
+                  htmlFor="marketingConsent"
+                  className="text-sm leading-relaxed"
+                >
                   BPE may contact you with updates & offers. Your data may be
                   shared with selected third parties.
                 </Label>
@@ -312,7 +338,7 @@ export default function RegistrationForm({ type }: { type: string }) {
             </Button>
           </div>
 
-          {/* BANNER SECTION - HIDDEN ON MOBILE */}
+          {/* BANNER SECTION */}
           <div className="hidden lg:flex w-full h-full justify-center items-start">
             <div className="w-full h-[700px] overflow-hidden rounded-xl shadow-md border border-gray-200 bg-white">
               <img
