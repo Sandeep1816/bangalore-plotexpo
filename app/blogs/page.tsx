@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import BlogGridClient from "@/app/components/ui/blogGridComponent";
 import { getBlogPostsByProject } from "@/sanity/lib/blogs";
 
