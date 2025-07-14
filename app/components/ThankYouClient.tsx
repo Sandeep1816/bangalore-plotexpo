@@ -59,7 +59,7 @@ export default function ThankYouClient() {
               <p className="text-base">
                 We look forward to welcoming you at the White House Convention Centre HSR Layout Next to BDA Complex
               </p>
-              <p className="text-base font-medium">26 July – 27 July 2025</p>
+              <p className="text-base font-medium">02 August – 03 August 2025</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
