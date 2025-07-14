@@ -92,7 +92,7 @@ const ThankYouPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start text-center px-4 py-12 bg-white mt-8">
-      {/* Header Card */}
+      {/* Header Card.... */}
       <div className="w-full max-w-2xl rounded-t-lg py-4 text-white font-bold text-2xl bg-[#406E24] mt-8">
         Bangalore Plot Expo 2025 - {heading}
       </div>
