@@ -1,4 +1,4 @@
-// app/registration/thankyou/ThankYouClient.tsx
+// app/registration/thankyou/ThankYouClient.tsxrtrh
 'use client'
 
 import { useSearchParams } from 'next/navigation'
