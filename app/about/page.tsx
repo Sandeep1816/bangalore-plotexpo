@@ -26,7 +26,7 @@ export default function AboutPage() {
               <h1 className="text-4xl md:text-5xl font-bold text-green-700 mb-6">About Us</h1>
               <p className="text-gray-700 mb-4 text-lg">
                 Welcome to the <strong className="text-[#00620F]">Bengaluru Plot Expo 2025</strong> — the city's largest and most exclusive real
-                estate showcase dedicated entirely to plot and farmland investments.
+                estate showcase dedicated entirely to plot and farmland investments..
               </p>
               <p className="text-gray-700 mb-6 text-lg">
                 This two-day mega event is designed to bring together leading developers, land aggregators, and
