@@ -101,7 +101,7 @@
 // }
 
 
-// app/registration/thankyou/page.tsx
+// app/registration/thankyou/page.tsx..............
 'use client'
 
 import { Suspense } from 'react'
