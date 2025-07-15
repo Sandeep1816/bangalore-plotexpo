@@ -16,7 +16,6 @@ import {
   SelectValue,
 } from "@/app/components/ui/select";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 export default function RegistrationForm({ type }: { type: string }) {
   const router = useRouter();
@@ -66,26 +65,21 @@ export default function RegistrationForm({ type }: { type: string }) {
       ),
     }),
     onSubmit: async (values, { setSubmitting }) => {
-      try {
-        const res = await fetch(`/api/registration?type=${type}`, {
+      // Show thank-you page immediately
+      router.push(`/registration/thankyou?type=${type}`);
+
+      // Background submit
+      setTimeout(() => {
+        fetch(`/api/registration?type=${type}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
+        }).catch((error) => {
+          console.error("Background submission error:", error);
         });
+      }, 200);
 
-        const data = await res.json();
-
-        if (res.ok) {
-          toast.success("Form submitted successfully!");
-          router.push(`/registration/thankyou?type=${type}`);
-        } else {
-          toast.error(data.error || "Submission failed.");
-        }
-      } catch (error) {
-        toast.error("An error occurred. Please try again later.");
-      } finally {
-        setSubmitting(false);
-      }
+      setSubmitting(false);
     },
   });
 
